@@ -38,8 +38,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   var value = 20.0;
-  void onChanged(double _value) =>
-      setState(() => _animationController.animateTo(_value));
+  void onChanged(double _value) => setState(() => value = _value);
   var value2 = 40.0;
   void onChanged2(double _value) => setState(() => value2 = _value);
 
@@ -52,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen>
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _animationController.value = 20;
   }
 
   @override
@@ -70,15 +68,12 @@ class _HomeScreenState extends State<HomeScreen>
           Spacer(),
           Container(
             height: 230,
-            child: AnimatedBuilder(
-              animation: _animationController,
-              builder: (context, child) => VerticalSlider(
-                onChanged: onChanged,
-                max: 100,
-                min: 0,
-                value: _animationController.value,
-                width: 80,
-              ),
+            child: VerticalSlider(
+              onChanged: onChanged,
+              max: 100,
+              min: 0,
+              value: value,
+              width: 80,
             ),
           ),
           Spacer(),
@@ -107,11 +102,9 @@ class _HomeScreenState extends State<HomeScreen>
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              // setState(() {
-              //   value = value + 20;
-              // });
-
-              _animationController.value = _animationController.value + 20;
+              setState(() {
+                value = value + 20;
+              });
             },
           ),
         ]),
