@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as Math;
 
 void main() {
   runApp(const MyApp());
@@ -53,9 +54,20 @@ class PathPainter extends CustomPainter {
     // path.cubicTo(size.width / 4, 3 * size.height / 4, 3 * size.width / 4,
     //     size.height / 4, size.width, size.height);
 
-    path.conicTo(
-        size.width / 4, 3 * size.height / 4, size.width, size.height, 20);
-    
+    // path.conicTo(
+    //     size.width / 4, 3 * size.height / 4, size.width, size.height, 20);
+
+    // double degToRad(double deg) => deg * (Math.pi / 180.0);
+    // path.arcTo(
+    //     Rect.fromLTWH(
+    //         size.width / 2, size.height / 2, size.width / 4, size.height / 4),
+    //     degToRad(0),
+    //     degToRad(90),
+    //     true);
+
+    // path.addRect(Rect.fromLTWH(
+    //     size.width / 2, size.height / 2, size.width / 4, size.height / 4));
+
     canvas.drawPath(path, paint);
     path.close();
   }
